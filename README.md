@@ -1,4 +1,4 @@
-<h1 align="center">chops - cho's header-only program selection</h1>
+<h1 align="center">chops - chop's header-only program selection</h1>
 
 <p align="center">
   <a href="https://travis-ci.com/thumpro/chops">
