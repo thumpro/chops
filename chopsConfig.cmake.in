@@ -1,0 +1,7 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+if (NOT TARGET chops::chops)
+  include(${CMAKE_CURRENT_LIST_DIR}/chopsTargets.cmake)
+endif ()
