@@ -7,7 +7,7 @@
 #define SEMI_EXPANDED(type, count, ...) INTERNAL_EXPAND(FULLY_EXPANDED(type, count, __VA_ARGS__))
 #define MAKE_LENSE(type, ...) INTERNAL_EXPAND(SEMI_EXPANDED(type, VA_NARGS(__VA_ARGS__), __VA_ARGS__))
 
-#define ACTUAL_MACRO(type, field) MAKE_LENSE_(type, field);
+#define ACTUAL_MACRO(type, field) MAKE_LENSE_(type, field)
 
 #define LENS_MACRO_EXPAND_EACH1(type,a) \
         INTERNAL_EXPAND(ACTUAL_MACRO(type,a))
