@@ -170,26 +170,22 @@ struct variant {
     }
 
     variant(variant const& o) {
-        std::printf("copy c\n");
         detail::copy_helper<0, Ts...>::copy(o.i, data, o.data);
         i = o.i;
     }
 
     variant(variant&& o) {
-        std::printf("move c\n");
         detail::move_helper<0, Ts...>::move(o.i, data, o.data);
         i = o.i;
     }
 
     variant& operator=(variant const& o) {
-        std::printf("copy a\n");
         detail::copy_helper<0, Ts...>::copy(o.i, data, o.data);
         i = o.i;
         return *this;
     }
 
     variant& operator=(variant&& o) {
-        std::printf("move a\n");
         detail::move_helper<0, Ts...>::move(o.i, data, o.data);
         i = o.i;
         return *this;
