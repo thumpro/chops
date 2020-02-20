@@ -49,7 +49,7 @@ auto visit_each(T const& s, Fn&& f) {
 template <typename T, typename Fn>
 auto visit_by_name(T const& s, std::string_view const& member, Fn&& f) {
     auto i = T::member_index(s, member);
-    return details::apply_at(s, T::all(s), i, f);
+    return detail::apply_at(s, T::all(s), i, f);
 }
 
 template <typename T, typename Fn>

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <chops/function_traits.hpp>
 #include <tuple>
 #include <type_traits>
 
@@ -23,7 +23,7 @@ private:
 
 template <typename M, typename T, typename Fn>
 auto apply_at(M const& m, T const& t, std::size_t i, Fn&& f) {
-    using Traits = function_traits<decltype(std::move(f))>;
+    using Traits = chops::type_traits::function_traits<decltype(std::move(f))>;
     using arg = typename Traits::template argument<0>::type;
     using param_type = std::remove_reference_t<arg>;
     using return_type = typename Traits::return_type;
