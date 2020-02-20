@@ -14,7 +14,7 @@ struct cmd_arg_model {
 TEST_CASE("basic command line parsing functionality", "[program_options]") {
     cmd_arg_model opts;
     int argc = 2;
-    char* argv[2]{"main", "--verbosity=42 --pi=3.14f --path=~/foo"};
+    const char* argv[2]{"main", "--verbosity=42 --pi=3.14f --path=~/foo"};
     chops::cmd_arg_parser::parse_cmd(opts, argc, argv);
     using chops::lenses::view;
     using chops::lenses::operator*;

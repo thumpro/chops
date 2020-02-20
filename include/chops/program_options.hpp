@@ -17,7 +17,7 @@ struct is_optional<std::optional<T>> : std::true_type {
 namespace chops::cmd_arg_parser {
 
 template <typename T>
-void parse_cmd(T& t, int argc, char** argv) {
+void parse_cmd(T& t, int argc, const char** argv) {
     using lenses::set;
     using lenses::visit_at;
     using lenses::operator*;
