@@ -19,11 +19,15 @@ struct person {
 TEST_CASE("basic lense functionality", "[lenses]") {
     int n = VA_NARGS(a,b,c,d,e,f,g,h,i,j,k,l);
     REQUIRE(n == 12);
-
+    auto t = std::make_tuple(STRINGIFY_VA(foo, bar, baz));
+    REQUIRE(std::get<0>(t) == std::string_view{"foo"});
+    REQUIRE(std::get<1>(t) == std::string_view{"bar"});
+    REQUIRE(std::get<2>(t) == std::string_view{"baz"});
+    
     using chops::lenses::view;
     using chops::lenses::set;
     using chops::lenses::operator*;
-    using chops::lenses::on_each;
+    using chops::lenses::visit_each;
 
     person p{"john", job{"architect", 3.14f}};
     // look over and view the name
@@ -34,7 +38,7 @@ TEST_CASE("basic lense functionality", "[lenses]") {
     REQUIRE(set(p * person::work * job::position, "programmer") * view == std::string("programmer"));
 
     // or filter on all the members of a struct, results are in a tuple
-    auto r = on_each(p, [](auto const& x) { return sizeof(x) > 16; });
+    auto r = visit_each(p, [](auto const& x) { return sizeof(x) > 16; });
     // r is std::tuple<bool, bool>
     REQUIRE(std::get<0>(r)); // std::string member has size 32 on gcc, 40 on msvc...
     REQUIRE(std::get<1>(r)); // job member has size 40

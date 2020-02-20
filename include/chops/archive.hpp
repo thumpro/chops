@@ -1,3 +1,4 @@
+#pragma once
 #include <algorithm>
 #include <string>
 #include <vector>
@@ -300,7 +301,7 @@ public:
 
     const archive& operator&(const std::string& v) const
     {
-        uint32_t len = v.length();
+        uint32_t len = static_cast<uint32_t>(v.length());
         *this & len;
         m_stream.write(v.c_str(), len);
         return *this;

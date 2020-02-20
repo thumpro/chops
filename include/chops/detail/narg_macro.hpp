@@ -1,3 +1,5 @@
+#pragma once
+
 #define INTERNAL_EXPAND(x) x
 #ifdef _MSC_VER // Microsoft compilers
 #define VA_NARGS(...)  INTERNAL_EXPAND_ARGS_PRIVATE(INTERNAL_ARGS_AUGMENTER(__VA_ARGS__))
